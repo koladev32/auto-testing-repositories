@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         repositories: [
-          https://github.com/koladev32/react-test-driven-development.git,
-          https://github.com/koladev32/react-user-dashboard-project.git
+          "https://github.com/koladev32/react-test-driven-development.git",
+          "https://github.com/koladev32/react-user-dashboard-project.git"
         ]
         node-version: [12, 14, 16]
         commands: [yarn, npm]
