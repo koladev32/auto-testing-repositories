@@ -40,11 +40,13 @@ jobs:
           cd test-repository
           ${{ matrix.commands }} test
       
-      - name: Run build
+      - name: Run build with yarn
         if: ${{ matrix.commands }} == "yarn"
         run: |
           cd test-repository
           yarn build
+        
+      - name: Run build with npm
         if: ${{ matrix.commands }} == "npm"
         run: |
           cd test-repository
