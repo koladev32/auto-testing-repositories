@@ -25,7 +25,28 @@ jobs:
           owner: 'koladev32'
           repository: ${{ matrix.repositories }}
 
-      - name: Access cloned repositorydll
+      - name: Access cloned repository
         run: |
           cd ${{ matrix.repositories }}
           ls -la
+
+
+      - name: Install dependencies
+        run: |
+          cd test-repository
+          ${{ matrix.commands }} install
+      - name: Run tests
+        run: |
+          cd test-repository
+          ${{ matrix.commands }} test
+      
+      - name: Run build
+        if: ${{ matrix.commands }} == "yarn"
+        run: |
+          cd test-repository
+          yarn build
+        if: ${{ matrix.commands }} == "npm"
+        run: |
+          cd test-repository
+          npm run build
+        
