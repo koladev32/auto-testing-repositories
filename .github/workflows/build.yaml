@@ -17,7 +17,7 @@ jobs:
           "https://github.com/koladev32/react-user-dashboard-project.git"
         ]
         node-version: [12, 14, 16]
-        commands: [yarn, npm]
+        commands: ["yarn", "npm"]
     steps:
       - uses: actions/checkout@v2
       - name: Setting the repositories
