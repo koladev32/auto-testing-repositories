@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setting the repositories
         run: |
+          ls -la
           readarray -t repoArrays < <(jq -c '.repositories[]' repos.json) # Reads the repositories from the json file
           for repo in "${repoArrays[@]}"; do
             echo "Setting repository $repoName to $repoUrl"
