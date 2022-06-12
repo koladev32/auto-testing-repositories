@@ -1,4 +1,4 @@
-name: React Testing and Build
+name: Compatibility Check
 
 on:
   push:
