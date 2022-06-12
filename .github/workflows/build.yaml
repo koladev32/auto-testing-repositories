@@ -1,19 +1,31 @@
-name: React Testing and Deploying
+name: Compatibility Check
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main-v2 ]
   pull_request:
-    branches: [ master ]
+    branches: [ main-v2 ]
 
 jobs:
-  test:
-    name: Tests
+  compatibility-check:
+    name: Compatibility Check
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        repositories: [
+          "react-test-driven-development",
+          "react-user-dashboard-project"
+        ]
+        node-version: [12, 14, 16]
+        commands: ["yarn", "npm"]
     steps:
-      - uses: actions/checkout@v2
-      - name: Give permissions for script to run
+      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'koladev32'
+          repository: {{ matrix.repositories }}
+
+      - name: Access cloned repositorydll
         run: |
-          sudo chmod +x build-deploy.sh
-      - name: Run script
-        run: ./build-deploy.sh
+          cd {{ matrix.repositories }}
+          ls -la
