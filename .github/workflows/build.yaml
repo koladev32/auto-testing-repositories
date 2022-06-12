@@ -33,8 +33,10 @@ jobs:
 
       - name: Run tests
         run: |
+          cd test-repository
           ${{ matrix.commands }} test
       
       - name: Run build
         run: |
+          cd test-repository
           ${{ matrix.commands }} build
