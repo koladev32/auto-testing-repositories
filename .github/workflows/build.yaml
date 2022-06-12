@@ -43,6 +43,6 @@ jobs:
       - name: Run build command
         run: |
           cd ${{ matrix.repositories }}
-          yarn build
+          ${{ matrix.commands }} build
         
         
