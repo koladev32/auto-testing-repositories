@@ -11,6 +11,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
       - name: Give permissions for script to run
         run: |
           sudo chmod +x build-deploy.sh
