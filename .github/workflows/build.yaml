@@ -28,6 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd test-repository
           ${{ matrix.commands }} install
 
       - name: Run tests
