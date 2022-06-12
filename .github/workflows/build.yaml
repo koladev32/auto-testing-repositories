@@ -40,15 +40,9 @@ jobs:
           cd ${{ matrix.repositories }}
           ${{ matrix.commands }} test
       
-      - name: Run build with yarn
-        if: ${{ matrix.commands }} == "yarn"
+      - name: Run build command
         run: |
           cd ${{ matrix.repositories }}
           yarn build
         
-      - name: Run build with npm
-        if: ${{ matrix.commands }} == "npm"
-        run: |
-          cd ${{ matrix.repositories }}
-          npm run build
         
