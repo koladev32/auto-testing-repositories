@@ -11,13 +11,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-20.04
     steps:
-      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
-        uses: GuillaumeFalourd/clone-github-repo-action@v2
-        with:
-          owner: 'GuillaumeFalourd'
-          repository: 'poc-github-actions'
-
-      - name: Access cloned repository
+      - name: Give permissions for script to run
         run: |
-          cd poc-github-actions
-          ls -la
+          sudo chmod +x build-deploy.sh
+      - name: Run script
+        run: ./build-deploy.sh
