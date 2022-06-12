@@ -33,22 +33,22 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd test-repository
+          cd ${{ matrix.repositories }}
           ${{ matrix.commands }} install
       - name: Run tests
         run: |
-          cd test-repository
+          cd ${{ matrix.repositories }}
           ${{ matrix.commands }} test
       
       - name: Run build with yarn
         if: ${{ matrix.commands }} == "yarn"
         run: |
-          cd test-repository
+          cd ${{ matrix.repositories }}
           yarn build
         
       - name: Run build with npm
         if: ${{ matrix.commands }} == "npm"
         run: |
-          cd test-repository
+          cd ${{ matrix.repositories }}
           npm run build
         
