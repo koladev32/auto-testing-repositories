@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
+        repositories: [
+          https://github.com/koladev32/react-test-driven-development.git,
+          https://github.com/koladev32/react-user-dashboard-project.git
+        ]
         node-version: [12, 14, 16]
         commands: [yarn, npm]
     steps:
       - uses: actions/checkout@v2
       - name: Setting the repositories
         run: |
-          ls -la
-          readarray -t repoArrays < <(jq -c '.repositories[]' repos.json) # Reads the repositories from the json file
-          for repo in "${repoArrays[@]}"; do
-            echo "Setting repository $repo"
-          done
+          echo "Setting the repositories"
+          git clone ${{ matrix.repositories }}
