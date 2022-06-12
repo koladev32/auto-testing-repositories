@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Tests
+  compatibility-check:
+    name: Testing and Build
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -24,3 +24,16 @@ jobs:
         run: |
           echo "Setting the repositories"
           git clone ${{ matrix.repositories }}
+          cd $(basename ${{ matrix.repositories }} .git)
+
+      - name: Install dependencies
+        run: |
+          {{ matrix.commands }} install
+
+      - name: Run tests
+        run: |
+          {{ matrix.commands }} test
+      
+      - name: Run build
+        run: |
+          {{ matrix.commands }} build
