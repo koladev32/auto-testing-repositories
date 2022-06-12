@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "Setting the repositories"
           git clone ${{ matrix.repositories }}
-          cd $(basename ${{ matrix.repositories }} .git)
+          cd "$(basename ${{ matrix.repositories }} .git)"
 
       - name: Install dependencies
         run: |
