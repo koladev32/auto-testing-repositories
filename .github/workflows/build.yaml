@@ -23,9 +23,9 @@ jobs:
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'koladev32'
-          repository: {{ matrix.repositories }}
+          repository: ${{ matrix.repositories }}
 
       - name: Access cloned repositorydll
         run: |
-          cd {{ matrix.repositories }}
+          cd ${{ matrix.repositories }}
           ls -la
