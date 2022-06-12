@@ -21,5 +21,5 @@ jobs:
           ls -la
           readarray -t repoArrays < <(jq -c '.repositories[]' repos.json) # Reads the repositories from the json file
           for repo in "${repoArrays[@]}"; do
-            echo "Setting repository $repoName to $repoUrl"
+            echo "Setting repository $repo"
           done
