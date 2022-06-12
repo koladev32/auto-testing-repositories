@@ -1,19 +1,24 @@
-name: React Testing and Deploying
+name: React Testing and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   test:
     name: Tests
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
+        commands: [yarn, npm]
     steps:
       - uses: actions/checkout@v2
-      - name: Give permissions for script to run
+      - name: Setting the repositories
         run: |
-          sudo chmod +x build-deploy.sh
-      - name: Run script
-        run: ./build-deploy.sh
+          readarray -t repoArrays < <(jq -c '.repositories[]' repos.json) # Reads the repositories from the json file
+          for repo in "${repoArrays[@]}"; do
+            echo "Setting repository $repoName to $repoUrl"
+          done
