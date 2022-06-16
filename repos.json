@@ -1,10 +1,10 @@
 {
     "repositories": [
         {
-            "repoURL": "https://github.com/koladev32/react-test-driven-development.git"
+            "repoURL": "https://github.com/app-generator/react-datta-able.git"
         },
         {
-            "repoURL": "https://github.com/koladev32/react-user-dashboard-project.git"
+            "repoURL": "https://github.com/app-generator/react-berry-dashboard.git"
         }
     ]
 }

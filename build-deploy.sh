@@ -52,7 +52,7 @@ readarray -t repoArrays < <(jq -c '.repositories[]' repos.json) # Reads the repo
             continue
         fi
       echo "Running test with $command"
-        if CI=true $command test; then
+        if CI=true $command test --passWithNoTests; then
             print_message "success" "Tests passed $command"
         else
             print_message "error" "Tests failed $command"
